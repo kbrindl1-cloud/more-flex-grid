@@ -67,8 +67,6 @@ header{
     background-clip: border-box;
     background-position: right;
     background-size: contain;
-
-    /* TO DO → flexbox layout */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -95,7 +93,6 @@ h1 a{
     text-decoration: none;
     color: var(--forest);
 }
-
 h1 a:hover, h1 a:focus{
     text-decoration: underline;
     outline: none;
@@ -129,17 +126,13 @@ nav{
     margin: 0 0 0 6rem;
     position: relative;
 }
-
 nav ul{
     list-style-type: none;
     padding: 0;
-
-    /* TO DO → flexbox layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 nav a{
     display: block;
     font-size: 2.5rem;
@@ -149,7 +142,6 @@ nav a{
     font-family: var(--heading-fonts);
     letter-spacing: 1px;
 }
-
 nav a svg{
     display: block;
     width: 200px;
@@ -160,23 +152,21 @@ nav a svg{
     transition: all 300ms;
     z-index: 0;
 }
-
 nav a span{
     display: block;
     position: relative;
-
-    /* TO DO → stacking text on top of svg */
     top: -120px;
     z-index: 1;
 }
-
-nav a:focus{
-    outline: none;
-}
-
+nav a:focus{ outline: none; }
 nav a:hover svg, nav a:focus svg{
     transform: scale(1.25) rotate(320deg);
 }
+
+/* Links */
+a{ color: var(--leaf); }
+a:hover{ color: var(--forest); text-decoration: none; }
+a:focus{ outline-color: var(--forest); outline-offset: 4px; }
 
 /* Main Styles */
 main{
@@ -184,17 +174,12 @@ main{
     max-width: 1280px;
     padding: 32px 0;
 }
-
-/* Paragraphs in the Main (Direct Descendants Only) */
 main > p{
     color: var(--wht);
     margin-bottom: 96px;
     font-size: 1.5rem;
 }
-
-main > section{
-    padding: 32px;
-}
+main > section{ padding: 32px; }
 
 /* Text */
 p{
@@ -208,39 +193,29 @@ p{
 #plants{
     background-color: var(--wht);
     padding: 96px 32px;
-
-    /* TO DO → grid layout */
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+    justify-items: center;
 }
-
 #plants h3, #plants > p{
-    /* TO DO → center grid children */
     grid-column: 1 / -1;
     text-align: center;
 }
-
 #plants section{
-    /* TO DO → flexbox card layout */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 32px auto 0;
+    max-width: 400px;
 }
-
-#plants h4{
-    margin: 16px 0;
-}
-
+#plants h4{ margin: 16px 0; }
 #plants img{
-    /* TO DO → reorder image above text if needed */
     order: -1;
     width: 100%;
     max-width: 400px;
     height: auto;
 }
-
 .price{
     font-weight: 600;
     text-align: center;
@@ -255,30 +230,155 @@ p{
 #contact{
     color: var(--wht);
     padding: 64px 32px;
-
-    /* TO DO → grid layout */
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
 }
-
 #contact h3, #contact > p{
-    /* TO DO → center text in first row */
     grid-column: 1 / -1;
     text-align: center;
 }
+#contact h3, #contact h4, #contact a, #contact label, #contact address{
+    color: var(--wht);
+}
+#contact a{ display: block; padding: 4px 0; }
+#contact > div, #contact > section{ margin-top: 32px; }
+#contact div h4, #contact div caption, #contact #social h4{ margin-top: 48px; }
+#contact h4:first-of-type{ margin-bottom: 8px; margin-top: 0; }
+
+/* Address */
+address{ width: fit-content; margin: 0 auto; font-style: normal; }
+address a:hover{ text-decoration: none; }
+address a:focus{ outline-offset: 2px; }
+
+/* Contact Table */
+table{
+    width: fit-content;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+caption{
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+    font-family: var(--heading-fonts);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+th{ font-size: 1.5rem; font-weight: 600; }
+th, td{ border-bottom: 2px solid var(--wht); padding: 10px 4px 4px 4px; }
+th:nth-of-type(even), td:nth-of-type(even){ padding-left: 24px; }
 
 /* Social Media Section */
+#social{
+    width: fit-content;
+    margin: 32px auto;
+    list-style-type: none;
+    padding: 0;
+}
 #social ul{
-    /* TO DO → grid layout for icons */
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
     justify-content: center;
+    width: fit-content;
+    margin: 16px auto;
+    list-style-type: none;
+    padding: 0;
+}
+#social h4{
+    text-align: center;
+}
+#social a{ display: block; padding: 8px 12px 0 12px; }
+#social svg{ stroke: var(--wht); }
+#social a:hover svg{ fill: var(--wht); stroke: var(--forest); }
+#social a:focus{ outline: 2px solid var(--mint); outline-offset: 2px; }
+
+/* Required Form Icons */
+.required svg{
+    display: inline-block;
+    padding-left: 4px;
+    stroke: var(--mint);
+    width: 1.5rem;
+    height: auto;
 }
 
-#social h4{
-    /* TO DO → full width, centered */
-    grid-column: 1 / -1;
-    text-align: center;
+/* Form */
+form{ width: 400px; margin: 0 auto; }
+label, input, textarea{
+    display: block;
+    font-size: 1.25rem;
+    width: calc(100% - 10px);
+}
+label{ margin: 12px 0 8px 0; font-size: 1.5rem; }
+input, textarea{
+    border: none;
+    background: var(--mint);
+    padding: 0 4px;
+    height: 3rem;
+    color: var(--dk-gray);
+    margin-bottom: 24px;
+    font-family: var(--body-fonts);
+}
+textarea{ height: 8rem; padding: 8px 4px; }
+input:focus, input:focus-visible, textarea:focus, textarea:focus-visible{
+    outline: 2px solid var(--wht);
+    outline-offset: 2px;
+    background-color: var(--forest);
+    color: var(--wht);
+}
+#feedback{
+    margin: 48px auto 32px;
+    width: 100%;
+    height: auto;
+    padding: 16px 0;
+    font-size: 1.75rem;
+    font-family: var(--body-fonts);
+    font-weight: 600;
+    border: 4px solid var(--mint);
+}
+#feedback:hover, #feedback:focus{
+    background-color: var(--forest);
+    color: var(--wht);
+    outline: none;
+}
+
+/* Plant-Row Div */
+#plant-row{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 420px;
+    background-image: url("images/plants-in-row.jpg");
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Back to Top of Page Link */
+#btt{
+    display: block;
+    line-height: 0;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    top: 90vh;
+    left: calc(100vw - 100px);
+    background-color: var(--forest);
+    border: 2px solid var(--wht);
+}
+#btt svg{ stroke: var(--wht); transition: all 300ms; }
+#btt:hover{ border-width: 4px; padding: 14px; }
+#btt:hover svg, #btt:focus svg{ transform: scale(1.5); }
+#btt:focus{ outline: 4px solid var(--leaf); outline-offset: 4px; }
+
+/* Footer */
+footer{ text-align: center; }
+
+/* Responsive Fixes */
+@media (max-width: 980px){
+    #plants{ grid-template-columns: 1fr; }
+    #contact{ grid-template-columns: 1fr; }
 }
